@@ -1,1 +1,47 @@
 //your JS code here. If required.
+const time=document.getElementById("timer");
+
+//time.innerText= new Date();
+
+function timeshow()
+{
+    const d = new Date();
+   let month=d.getMonth();
+   let day=d.getDay();
+   let year=d.getFullYear();
+
+   let hrs=d.getHours();
+   let min=d.getMinutes();
+   let sec=d.getSeconds();
+   if(min<10)
+   {
+	   min='0'+min;
+   }
+   let datetime=`${month}/${day}/${year}`;
+   let time=converttime(hrs,min,sec)
+   
+   time.innerHTML=`${datetime}, ${time}`
+}
+
+function converttime(hrs,min,sec)
+{
+    if(hrs==0)
+    {
+      return `12:${min}:${sec} AM`
+    }
+    else if(hrs>12)
+    {
+     return `${hrs-12}:${min}:${sec} PM`
+    }
+    else if(hrs==12)
+    {
+        return `${12}:${min}:${sec} PM`
+    }
+    else
+    {
+     return `${hrs}:${min}:${sec} PM`
+    }
+
+}
+
+setInterval(timeshow,1000)
